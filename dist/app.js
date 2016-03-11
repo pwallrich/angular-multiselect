@@ -16,7 +16,7 @@ angular.module('app', ['am.multiselect'])
     $scope.selectedFruit = null;
 
     $scope.list = [];
-    for(var i = 0; i < 50; i++){
+    for(var i = 0; i < 20; i++){
         $scope.list.push({id: i, name: 'item '+ i});
     }
     $scope.selectedList = $scope.list[10];
