@@ -1,14 +1,12 @@
-<<<<<<< HEAD
-My Page
-=======
 <html ng-app="app">
 <head>
     <title>Angular multiselect</title>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="//raw.githubusercontent.com/amitava82/angular-multiselect/master/dist/multiselect.css">
+    <link rel="stylesheet" href="multiselect.css">
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
-    <script src="dist/app.js"></script>
-    <script src="dist/multiselect.js"></script>
+    <script src="app.js"></script>
+    <script src="multiselect.js"></script>
+
     <style type="text/css">
     ul, li{
         list-style-type: none;
@@ -26,25 +24,23 @@ My Page
     <am-multiselect class="input-lg" multiple="true" ms-selected ="There are {{selectedCar.length}} car(s) selected"
     ng-model="selectedCar" ms-header="Select Some Cars"
     options="c.name for c in cars"
-    template-url="dist/multiselect.tmpl.html"
     change="selected()"></am-multiselect>
     <div class="well well-sm">
         {{selectedCar}}
     </div>
     Single select:
     <am-multiselect class="input-lg"
-    template-url="dist/multiselect.tmpl.html"
     ng-model="selectedFruit"
     options="c.name for c in fruits"
     change="selected()" ></am-multiselect>
     <div class="well well-sm">
         {{selectedFruit}}
     </div>
-
+    <hr />
     Custom tmpl:
     <am-multiselect class="input-lg"
     ng-model="selectedList"
-    template-url="dist/custom.tmpl.html"
+    template-url="custom.tmpl.html"
     options="c.name for c in list"
     change="selected()" ></am-multiselect>
     <div class="well well-sm">
@@ -53,4 +49,3 @@ My Page
 
 </body>
 </html>
->>>>>>> 5421dd2352d4824fcc6d70e006aa2883faad10b7
