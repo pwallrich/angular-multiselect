@@ -47,7 +47,10 @@ angular.module('am.multiselect', [])
         scope.header = 'Select';
         scope.multiple = isMultiple;
         scope.disabled = false;
-        scope.onBlur = attrs.ngBlur || angular.noop;
+        scope.onBlur = attrs.ngBlur || angular.noop,
+
+        field = attrs.field;
+          scope.hasAdd = attrs.add;
 
         originalScope.$on('$destroy', function () {
             scope.$destroy();
@@ -122,7 +125,7 @@ angular.module('am.multiselect', [])
         element.append($compile(popUpEl)(scope));
 
         function getHeaderText() {
-            if (is_empty(modelCtrl.$modelValue)) return scope.header = (attrs.msHeader!==undefined ? attrs.msHeader : 'Select');
+            if (is_empty(modelCtrl.$modelValue)) return scope.header = attrs.msHeader || 'Select';
 
             if (isMultiple) {
                 if (attrs.msSelected) {
@@ -242,7 +245,16 @@ angular.module('am.multiselect', [])
             } else {
                 selectMultiple(item);
             }
-        }
+        };
+        scope.addNew = function(newItem){
+            if(!newItem){
+              return;
+            }
+            //originalScope.()
+            var str = attrs.options.substring(attrs.options.lastIndexOf(' ') +1, attrs.options.length);
+            originalScope[str].push(newItem);
+
+        };
         }
     };
 }])
@@ -323,4 +335,25 @@ angular.module('am.multiselect', [])
     }
 }]);
 
-angular.module("am.multiselect").run(["$templateCache", function($templateCache) {$templateCache.put("multiselect.tmpl.html","<div class=\"btn-group\">\n    <button type=\"button\" class=\"btn btn-default dropdown-toggle\" ng-click=\"toggleSelect()\" ng-disabled=\"disabled\" ng-class=\"{\'error\': !valid()}\">\n        {{header}}\n        <span class=\"caret\"></span>\n    </button>\n    <ul class=\"dropdown-menu\">\n        <li>\n            <input class=\"form-control input-sm\" type=\"text\" ng-model=\"searchText.label\" ng-keydown=\"keydown($event)\" autofocus=\"autofocus\" placeholder=\"Filter\" />\n        </li>\n        <li ng-show=\"multiple\" role=\"presentation\" class=\"\">\n            <button class=\"btn btn-link btn-xs\" ng-click=\"checkAll()\" type=\"button\"><i class=\"glyphicon glyphicon-ok\"></i> Check all</button>\n            <button class=\"btn btn-link btn-xs\" ng-click=\"uncheckAll()\" type=\"button\"><i class=\"glyphicon glyphicon-remove\"></i> Uncheck all</button>\n        </li>\n        <li ng-repeat=\"i in items | filter:searchText\" ng-class=\"{\'selected\': $index === selectedIndex}\">\n            <a ng-click=\"select(i); focus()\">\n            <i class=\'glyphicon\' ng-class=\"{\'glyphicon-ok\': i.checked, \'empty\': !i.checked}\"></i> {{i.label}}</a>\n        </li>\n    </ul>\n</div>\n");}]);
+angular.module("am.multiselect").run(["$templateCache", function($templateCache) {$templateCache.put("multiselect.tmpl.html",
+    "<div class=\"btn-group\">\n" +
+      "  <button type=\"button\" class=\"btn btn-default dropdown-toggle\" ng-click=\"toggleSelect()\" ng-disabled=\"disabled\" ng-class=\"{'error': !valid()}\">\n" +
+      "    {{header}} <span class=\"caret\"></span>\n" +
+      "  </button>\n" +
+      "  <ul class=\"dropdown-menu\">\n" +
+      "    <li>\n" +
+      "      <input class=\"form-control input-sm\" type=\"text\" ng-model=\"searchText.label\" autofocus=\"autofocus\" placeholder=\"Filter\" />\n" +
+      "    </li>\n" +
+      "    <li ng-show=\"multiple\" role=\"presentation\" class=\"\">\n" +
+      "      <button class=\"btn btn-link btn-xs\" ng-click=\"checkAll()\" type=\"button\"><i class=\"glyphicon glyphicon-ok\"></i> Check all</button>\n" +
+      "      <button class=\"btn btn-link btn-xs\" ng-click=\"uncheckAll()\" type=\"button\"><i class=\"glyphicon glyphicon-remove\"></i> Uncheck all</button>\n" +
+      "<div class=\"input-group input-sm\" ng-show=\"hasAdd\"> "+
+      " <input type=\"text\" class=\"form-control\" placeholder=\"New\" ng-model=\"newElement\">" + 
+      " <span class=\"input-group-btn\"><button class=\"btn btn-default\" type=\"button\" ng-click=\"addNew(newElement);newElement='';\"><i class=\"glyphicon glyphicon-plus\"></i></button></span></div>"+
+      "    </li>\n" +
+      "    <li ng-repeat=\"i in items | filter:searchText\">\n" +
+      "      <a ng-click=\"select(i); focus()\">\n" +
+      "        <i class=\"glyphicon\" ng-class=\"{'glyphicon-ok': i.checked, 'empty': !i.checked}\"></i> {{i.label}}</a>\n" +
+      "    </li>\n" +
+      "  </ul>\n" +
+      "</div>");}]);
