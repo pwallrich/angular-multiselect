@@ -22,8 +22,9 @@
     <h1>Example</h1>
     <am-multiselect class="input-lg"
     ng-model="selectedList"
-    options="c.name for c in list"
-    change="selected()" add="true"></am-multiselect>
+    options="c for c in list"
+    change="selected()" multiple="true" add="true"></am-multiselect>
+    
     <div class="well well-sm">
         {{selectedList}}
     </div>
