@@ -1,3 +1,9 @@
+Custom multiselect which has the functionality to add new items through the select
+
+Check out the original Multiselect:
+
+http://amitava82.github.io/
+
 angular-multiselect
 ===================
 
