@@ -30,6 +30,17 @@ Usage
 Please look into the example.
 
 Please look into angularjs doc here https://code.angularjs.org/1.2.27/docs/api/ng/directive/select for options format (array data source)
+
+Issues
+------------
+(these issues might be fixed if I have the time. Just edited the original work to fix my needs right now)
+(feel free to fix the issues)
+
+- When adding new item, list gets deselected
+- not working for properties oj objects just for simple variables
+
+
+
 License
 =======
 The MIT License
