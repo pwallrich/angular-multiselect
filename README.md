@@ -2,14 +2,14 @@ Custom multiselect which has the functionality to add new items through the sele
 
 Check out the original Multiselect:
 
-http://amitava82.github.io/
+https://github.com/amitava82/angular-multiselect
 
 angular-multiselect
 ===================
 
 Native AngularJS multiselect directive.
 
-Example: http://amitava82.github.io/angular-multiselect/
+Example: http://pwallrich.github.io/angular-multiselect/
 
 Contributions welcome!
 
@@ -20,7 +20,7 @@ npm install angular-multiselect
 ```
 OR
 ```
-bower install amitava82-angular-multiselect
+bower install pwallrich-angular-multiselect
 ```
 OR
 Include `multiselect.js` and `multiselect.tmpl.html` or `multiselect-tpls.js` (it has template included) from `dist` folder.
