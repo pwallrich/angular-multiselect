@@ -1,0 +1,19 @@
+{
+  "name": "pwallrich/angular-multiselect",
+  "version": "0.0.1",
+  "main": "dist/multiselect-tpls.js",
+  "description": "Native AngularJS multiselect directive",
+  "license": "MIT",
+  "ignore": [
+    ".jshintrc",
+    "**/*.txt"
+  ],
+  "dependencies": {
+    "angular": ">=1.0.4"
+  },
+  "keywords": [
+    "angularjs",
+    "multiselect",
+    "select"
+  ]
+}
